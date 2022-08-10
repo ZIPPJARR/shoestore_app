@@ -16,7 +16,7 @@ print('Welcome To Shoestore!')
 print('Here you can purchase and sell any amount of shoes. ')
 
 brands = [ 'Nike', 'Adidas', 'VANS', 'Timberlands', 'Jordans']
-
+user_cart = {} 
 while True:
 
     print('to view shoes eneter "View" ') 
@@ -31,7 +31,7 @@ while True:
         list_brands = ' | '.join(brands)
         print(list_brands)
         continue
-    elif choice == 'buy': 
+    elif choice == 'buy' or 'Buy': 
         # logic for buy.
         print('what brand do you want to purchase: ')
         choice = input()
@@ -44,7 +44,7 @@ while True:
                 print('pruchase cancelled')
         else:
             print('brand not found')
-    elif choice == 'sell':
+    elif choice == 'sell' or 'Sell':
         #logic for sell.
         print('What brand do you want to sell?: ')
         choice = input()
@@ -58,7 +58,7 @@ while True:
                 print('Ticket aborted')
         else:
             print('brand not found')    
-    elif choice == 'quit':
+    elif choice == 'quit' or 'Quit':
         quit()
     else:
         print('command not recongnized')
