@@ -16,7 +16,8 @@ print('Welcome To Shoestore!')
 print('Here you can purchase and sell any amount of shoes. ')
 
 brands = [ 'Nike', 'Adidas', 'VANS', 'Timberlands', 'Jordans']
-user_cart = {} 
+user_cart = {'Nike':0, 'Adidas':0, 'VANS':0, 'Timberlands':0, 'Jordans':0}
+
 while True:
 
     print('to view shoes eneter "View" ') 
@@ -26,47 +27,48 @@ while True:
 
    
     choice = input()
-    
+    # user_cart['Nike']
     if choice == 'view':
-        list_brands = ' | '.join(brands)
-        print(list_brands)
-        continue
-    elif choice == 'buy' or 'Buy': 
+        for i in user_cart:
+            print(i + ' : ' + str(user_cart[i]))
+        
+    elif choice == 'buy': 
         # logic for buy.
         print('what brand do you want to purchase: ')
-        choice = input()
+        choice = input()# example: Nike
         if choice in brands:
             print('Are you sure you want to purchase?: ')
-            choice = input()
-            if choice == 'yes':
+            yes_or_no = input()# example: yes or no
+            if yes_or_no == 'yes':
                 print('purchase successful! ')
+                user_cart[choice] += 1
             else:
                 print('pruchase cancelled')
         else:
             print('brand not found')
-    elif choice == 'sell' or 'Sell':
+
+    elif choice == 'sell':
         #logic for sell.
         print('What brand do you want to sell?: ')
         choice = input()
         if choice in brands:
             print('Brand found! ')
             print('sell item? ')
-            choice = input()
-            if choice == 'yes':
-                print('Item posted to Market')
+            yes_or_no = input()
+            if yes_or_no == 'yes':
+                print('amount of items you want to sell:')
+                user_cart[choice] -= max(user_cart[choice] - int(input()), 0)
+                for i in user_cart:
+                    print(i + ' : ' + str(user_cart[i]))
+                print('showing amount sold')
             else:
                 print('Ticket aborted')
         else:
-            print('brand not found')    
-    elif choice == 'quit' or 'Quit':
-        quit()
-    else:
-        print('command not recongnized')
+            print('brand not found')  
 
-        
-    
-    
-   
+    elif choice == 'quit':
+        quit()
+
     
 
 
