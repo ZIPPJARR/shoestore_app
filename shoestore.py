@@ -14,13 +14,23 @@ def view_func():
     for i in user_cart:
         print(i + ' : ' + str(user_cart[i]))
 
+def confirmation(text):
+    print(text)
+    yes_or_no = input()
+    if yes_or_no == 'yes':
+        return True
+    else:
+        return False 
+    
+
+
+
 def buy_func():
     print('what brand do you want to purchase: ')
     choice = input()
     if choice in brands:
-        print('Are you sure you want to purchase?: ')
-        yes_or_no = input()
-        if yes_or_no == 'yes':
+        confirmed = confirmation('Are you sure you want to purchase? ')
+        if confirmed == True:
             print('purchase successful! ')
             user_cart[choice] += 1
         else:
@@ -32,10 +42,8 @@ def sell_func():
     print('What brand do you want to sell?: ')
     choice = input()
     if choice in brands:
-        print('Brand found! ')
-        print('sell item? ')
-        yes_or_no = input()
-        if yes_or_no == 'yes':
+        confirmed = confirmation('brand found! would you like to sell item? ')
+        if confirmed == True:
             print('amount of items you want to sell:')
             user_cart[choice] -= max(user_cart[choice] - int(input()), 0)
             for i in user_cart:
@@ -46,8 +54,7 @@ def sell_func():
     else:
         print('brand not found') 
 
-def quit_func():
-    quit()
+
 
 while True:
     print('to view shoes eneter "View" ') 
@@ -61,9 +68,10 @@ while True:
         
     elif choice == 'buy': 
        buy_func()
+       
 
     elif choice == 'sell':
        sell_func()  
 
     elif choice == 'quit':
-        quit_func()
+        quit()
